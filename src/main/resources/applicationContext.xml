@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<bean id="defaultConfigProperty" class="org.fisco.bcos.sdk.v3.config.model.ConfigProperty">
+		<property name="cryptoMaterial">
+			<map>
+			<entry key="certPath" value="conf" />
+				<entry key="useSMCrypto" value="false"/>
+			</map>
+		</property>
+		<property name="network">
+			<map>
+				<entry key="peers">
+					<list>
+                        <value>192.168.254.128:20200</value>
+                        <value>192.168.254.128:20201</value>
+					</list>
+				</entry>
+				<entry key="defaultGroup" value="group0" />
+				<entry key="messageTimeout" value="10000" />
+			</map>
+		</property>
+
+		<property name="account">
+			<map>
+				<entry key="keyStoreDir" value="account" />
+				<entry key="accountAddress" value="0x36685008b15fdabdb9016562e21f6aa2af56d32d" />
+				<entry key="accountFileFormat" value="pem" />
+				<entry key="password" value="" />
+				<entry key="accountFilePath" value="accounts/0x36685008b15fdabdb9016562e21f6aa2af56d32d.pem" />
+			</map>
+		</property>
+		<property name="threadPool">
+			<map>
+				<entry key="threadPoolSize" value="16" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="defaultConfigOption" class="org.fisco.bcos.sdk.v3.config.ConfigOption">
+		<constructor-arg name="configProperty">
+				<ref bean="defaultConfigProperty"/>
+		</constructor-arg>
+	</bean>
+
+	<bean id="bcosSDK" class="org.fisco.bcos.sdk.v3.BcosSDK">
+		<constructor-arg name="configOption">
+			<ref bean="defaultConfigOption"/>
+		</constructor-arg>
+	</bean>
+</beans>
+
