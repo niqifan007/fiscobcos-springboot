@@ -1,4 +1,4 @@
-# 基于 Spring Boot 的 CRUD 示例项目
+# FISCO BCOS 基于 Spring Boot 的 CRUD 示例项目
 
 本示例项目基于 Java SDK + Maven + Spring Boot 来调用智能合约。该项目仅适配 FISCO BCOS 3.0.x 版本，如果需要适配其他版本，请修改 `pom.xml` 文件中的 `fisco-java-sdk` 版本号。
 
